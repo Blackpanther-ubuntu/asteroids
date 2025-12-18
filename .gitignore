@@ -1,11 +1,11 @@
 # Python-generated files
-__pycache__/
-*.jsonl
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-game_state.jsonl
+astro_py_game/__pycache__/
+astro_py_game/*.jsonl
+astro_py_game/*.py[oc]
+astro_py_game/build/
+astro_py_game/dist/
+astro_py_game/wheels/
+astro_py_game/*.egg-info
+astro_py_game/game_state.jsonl
 # Virtual environments
-.venv
+astro_py_game/.venv
