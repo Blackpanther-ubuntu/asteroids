@@ -31,6 +31,8 @@ def main():
 
     dt = 0
     score = 0
+    lifes = 2
+    color = "white"
 
     while True:
         log_state()
@@ -38,15 +40,24 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-
+        if lifes == 2:
+            color = "green"
+        if lifes == 1:
+            color = "orange"
+        if lifes == 0:
+            color = "red"
         updatable.update(dt)
 
         for asteroid in asteroids:
             if asteroid.collides_with(player):
-                log_event("player_hit")
-                print("Game over!")
-                print(f"You shot down {score} asteroids")
-                sys.exit()
+                if lifes == 0:
+                    log_event("player_hit")
+                    print("Game over!")
+                    print(f"You shot down {score} asteroids")
+                    sys.exit()
+                else:
+                    lifes -= 1
+                    asteroid.kill()
 
         for asteroid in asteroids:
             for shot in shots:
@@ -58,7 +69,7 @@ def main():
         screen.fill("black")
 
         for obj in drawable:
-            obj.draw(screen)
+            obj.draw(screen, color)
 
         pygame.display.flip()
 
